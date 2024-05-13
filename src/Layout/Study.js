@@ -38,7 +38,7 @@ function Study() {
       return (
         <div>
           <h3>Not enough cards.</h3>
-          <p>No cards available. Please add some cards.</p>;
+          <p>No cards available. Please add some cards.</p>
           <Link to={`/decks/${deckId}/cards/new`}>Add Cards</Link>
         </div>
         );
