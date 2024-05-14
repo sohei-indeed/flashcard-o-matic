@@ -38,11 +38,14 @@ function DeckList() {
   };
 
   return (
-    <div className="DeckList">
-      <Link to="/decks/new">Create Deck</Link>
+    <div className="container mt-4">
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h2>Decks</h2>
+        <Link to="/decks/new" className="btn btn-primary">Create Deck</Link>
+      </div>
       {decks.length > 0 ? (
         decks.map((deck) => (
-          <DeckListView deck={deck} onDeleteDeck={handleDeleteDeck}/>
+          <DeckListView key={deck.id} deck={deck} onDeleteDeck={handleDeleteDeck}/>
         ))
       ) : (
         <p>No decks available. Please create one.</p>

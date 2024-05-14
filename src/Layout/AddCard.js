@@ -36,9 +36,13 @@ function AddCard() {
   }
 
   return (
-    <div className="CreateDeck">
-      <nav>
-        <Link to="/">Home</Link> / <Link to={`/decks/${deckId}`}>{deckDetails.name}</Link> / Add Card
+    <div className="container mt-4">
+      <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+          <li className="breadcrumb-item"><Link to={`/decks/${deckId}`}>{deckDetails.name}</Link></li>
+          <li className="breadcrumb-item active" aria-current="page">Add Card</li>
+        </ol>
       </nav>
       <h2>Add Card</h2>
       <CardForm deckId={deckId} onSave={saveCard} onCancel={cancel} isEdit={false} />

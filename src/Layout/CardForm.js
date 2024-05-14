@@ -12,10 +12,12 @@ function CardForm({ deckId, card = { front: '', back: '' }, onSave, onCancel, is
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await onSave(deckId, { front, back, id: card.id });
-    setFront('');
-    setBack('');
-    if (!isEdit) navigate(`/decks/${deckId}`);
+    await onSave(parseInt(deckId), { front, back, id: card.id });
+    if (!isEdit) {
+        setFront('');
+        setBack('');
+        navigate(`/decks/${deckId}`);
+    }
   };
 
   const handleCancel = () => {
@@ -24,9 +26,10 @@ function CardForm({ deckId, card = { front: '', back: '' }, onSave, onCancel, is
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+      <div className="form-group">
         <label htmlFor="front">Front</label>
         <textarea
+          className="form-control"
           id="front"
           value={front}
           onChange={handleFrontChange}
@@ -34,9 +37,10 @@ function CardForm({ deckId, card = { front: '', back: '' }, onSave, onCancel, is
           required
         />
       </div>
-      <div>
+      <div className="form-group">
         <label htmlFor="back">Back</label>
         <textarea
+          className="form-control"
           id="back"
           value={back}
           onChange={handleBackChange}
@@ -44,8 +48,8 @@ function CardForm({ deckId, card = { front: '', back: '' }, onSave, onCancel, is
           required
         />
       </div>
-      <button type="submit">{isEdit ? 'Submit' : 'Save'}</button>
-      <button type="button" onClick={handleCancel}>{isEdit ? 'Cancel' : 'Done'}</button>
+      <button type="submit" className="btn btn-primary mr-2">{isEdit ? 'Submit' : 'Save'}</button>
+      <button type="button" className="btn btn-secondary" onClick={handleCancel}>{isEdit ? 'Cancel' : 'Done'}</button>
     </form>
   );
 }

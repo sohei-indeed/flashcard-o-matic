@@ -36,15 +36,19 @@ function CreateDeck() {
   };
 
   return (
-    <div className="CreateDeck">
-      <nav>
-        <Link to="/">Home</Link> / Create Deck
+<div className="container mt-4">
+      <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+          <li className="breadcrumb-item active" aria-current="page">Create Deck</li>
+        </ol>
       </nav>
       <h2>Create Deck</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group">
           <label htmlFor="deckName">Deck Name</label>
           <input
+            className="form-control"
             id="deckName"
             type="text"
             value={deckName}
@@ -53,9 +57,10 @@ function CreateDeck() {
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label htmlFor="deckDescription">Description</label>
           <textarea
+            className="form-control"
             id="deckDescription"
             value={deckDescription}
             onChange={handleDescriptionChange}
@@ -63,8 +68,8 @@ function CreateDeck() {
             required
           />
         </div>
-        <button type="submit">Submit</button>
-        <button type="button" onClick={handleCancel}>Cancel</button>
+        <button type="submit" className="btn btn-primary mr-2">Submit</button>
+        <button type="button" className="btn btn-secondary" onClick={handleCancel}>Cancel</button>
       </form>
     </div>
   );

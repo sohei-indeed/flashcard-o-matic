@@ -38,9 +38,13 @@ function EditCard() {
   }
 
   return (
-    <div className="CreateDeck">
-      <nav>
-        <Link to="/">Home</Link> / <Link to={`/decks/${deckId}`}>{deckDetails.name}</Link> / Edit Card {cardId}
+<div className="container mt-4">
+      <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+          <li className="breadcrumb-item"><Link to={`/decks/${deckId}`}>{deckDetails.name}</Link></li>
+          <li className="breadcrumb-item active" aria-current="page">Edit Card {cardId}</li>
+        </ol>
       </nav>
       <h2>Edit Card</h2>
       <CardForm deckId={deckId} card={deckDetails.card} onSave={saveCard} onCancel={cancel} isEdit={true} />

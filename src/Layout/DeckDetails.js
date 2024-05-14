@@ -58,23 +58,30 @@ function DeckDetails() {
   }
 
   return (
-    <div className="DeckDetails">
-      <nav>
-        <Link to="/">Home</Link> / {deckDetails.name}
+    <div className="container mt-4">
+      <nav aria-label="breadcrumb">
+        <ol className="breadcrumb">
+          <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+          <li className="breadcrumb-item active" aria-current="page">{deckDetails.name}</li>
+        </ol>
       </nav>
       <h2>{deckDetails.name}</h2>
       <p>{deckDetails.description}</p>
-      <Link to={`/decks/${deckId}/edit`}>Edit</Link>
-      <Link to={`/decks/${deckId}/study`}>Study</Link>
-      <Link to={`/decks/${deckId}/cards/new`}>Add Cards</Link>
-      <button onClick={() => handleDeleteDeck(deckId)}>Delete</button>
+      <div className="mb-3">
+        <Link to={`/decks/${deckId}/edit`} className="btn btn-secondary mr-2">Edit</Link>
+        <Link to={`/decks/${deckId}/study`} className="btn btn-primary mr-2">Study</Link>
+        <Link to={`/decks/${deckId}/cards/new`} className="btn btn-primary">Add Cards</Link>
+        <button onClick={() => handleDeleteDeck(deckId)} className="btn btn-danger ml-2">Delete</button>
+      </div>
       <h3>Cards</h3>
       {deckDetails.cards.map((card) => (
-        <div key={card.id}>
-          <p>{card.front}</p>
-          <p>{card.back}</p>
-          <Link to={`/decks/${deckId}/cards/${card.id}/edit`}>Edit</Link>
-          <button onClick={() => handleDeleteCard(card.id)}>Delete</button>
+        <div key={card.id} className="card mb-2">
+          <div className="card-body">
+            <p className="card-text"><strong>Front:</strong> {card.front}</p>
+            <p className="card-text"><strong>Back:</strong> {card.back}</p>
+            <Link to={`/decks/${deckId}/cards/${card.id}/edit`} className="btn btn-secondary mr-2">Edit</Link>
+            <button onClick={() => handleDeleteCard(card.id)} className="btn btn-danger">Delete</button>
+          </div>
         </div>
       ))}
     </div>
